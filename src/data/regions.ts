@@ -160,5 +160,5 @@ export const COUNTRIES: CountryInfo[] = [
 ];
 
 export function getCountry(code: string): CountryInfo {
-  return COUNTRIES.find((c) => c.code === code) ?? COUNTRIES[0];
+  return COUNTRIES.find((c) => c.code === code) ?? (COUNTRIES[0] as CountryInfo);
 }
