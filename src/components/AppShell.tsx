@@ -41,7 +41,7 @@ const NAV: { to: string; key: StringKey; icon: typeof Sprout }[] = [
 
 export const HELPLINE = "1800-180-1551";
 
-function NavList({ lang, onPick }: { lang: string; onPick?: () => void }) {
+function NavList({ lang, onPick }: { lang: string; onPick?: (() => void) | undefined }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <nav className="flex flex-col gap-1 px-3">
@@ -76,7 +76,7 @@ function NavList({ lang, onPick }: { lang: string; onPick?: () => void }) {
   );
 }
 
-function SidebarBody({ lang, onPick }: { lang: string; onPick?: () => void }) {
+function SidebarBody({ lang, onPick }: { lang: string; onPick?: (() => void) | undefined }) {
   const { profile, country } = useProfile();
   return (
     <div className="flex h-full flex-col bg-nav text-nav-foreground">
