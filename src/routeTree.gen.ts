@@ -10,18 +10,27 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CommunityRouteImport } from './routes/community'
 import { Route as CropDoctorRouteImport } from './routes/crop-doctor'
 import { Route as DiseaseScannerRouteImport } from './routes/disease-scanner'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as MandiRouteImport } from './routes/mandi'
+import { Route as OfflineRouteImport } from './routes/offline'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as SchemesRouteImport } from './routes/schemes'
 import { Route as SoilRouteImport } from './routes/soil'
+import { Route as WeatherRouteImport } from './routes/weather'
 import { Route as ApiCropAdviceRouteImport } from './routes/api/crop-advice'
 import { Route as ApiTranslateRouteImport } from './routes/api/translate'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CropDoctorRoute = CropDoctorRouteImport.update({
@@ -44,14 +53,29 @@ const MandiRoute = MandiRouteImport.update({
   path: '/mandi',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OfflineRoute = OfflineRouteImport.update({
+  id: '/offline',
+  path: '/offline',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SchemesRoute = SchemesRouteImport.update({
+  id: '/schemes',
+  path: '/schemes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SoilRoute = SoilRouteImport.update({
   id: '/soil',
   path: '/soil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeatherRoute = WeatherRouteImport.update({
+  id: '/weather',
+  path: '/weather',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiCropAdviceRoute = ApiCropAdviceRouteImport.update({
@@ -67,35 +91,47 @@ const ApiTranslateRoute = ApiTranslateRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
   '/crop-doctor': typeof CropDoctorRoute
   '/disease-scanner': typeof DiseaseScannerRoute
   '/inventory': typeof InventoryRoute
   '/mandi': typeof MandiRoute
+  '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
+  '/schemes': typeof SchemesRoute
   '/soil': typeof SoilRoute
+  '/weather': typeof WeatherRoute
   '/api/crop-advice': typeof ApiCropAdviceRoute
   '/api/translate': typeof ApiTranslateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
   '/crop-doctor': typeof CropDoctorRoute
   '/disease-scanner': typeof DiseaseScannerRoute
   '/inventory': typeof InventoryRoute
   '/mandi': typeof MandiRoute
+  '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
+  '/schemes': typeof SchemesRoute
   '/soil': typeof SoilRoute
+  '/weather': typeof WeatherRoute
   '/api/crop-advice': typeof ApiCropAdviceRoute
   '/api/translate': typeof ApiTranslateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
   '/crop-doctor': typeof CropDoctorRoute
   '/disease-scanner': typeof DiseaseScannerRoute
   '/inventory': typeof InventoryRoute
   '/mandi': typeof MandiRoute
+  '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
+  '/schemes': typeof SchemesRoute
   '/soil': typeof SoilRoute
+  '/weather': typeof WeatherRoute
   '/api/crop-advice': typeof ApiCropAdviceRoute
   '/api/translate': typeof ApiTranslateRoute
 }
@@ -103,46 +139,62 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/community'
     | '/crop-doctor'
     | '/disease-scanner'
     | '/inventory'
     | '/mandi'
+    | '/offline'
     | '/profile'
+    | '/schemes'
     | '/soil'
+    | '/weather'
     | '/api/crop-advice'
     | '/api/translate'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/community'
     | '/crop-doctor'
     | '/disease-scanner'
     | '/inventory'
     | '/mandi'
+    | '/offline'
     | '/profile'
+    | '/schemes'
     | '/soil'
+    | '/weather'
     | '/api/crop-advice'
     | '/api/translate'
   id:
     | '__root__'
     | '/'
+    | '/community'
     | '/crop-doctor'
     | '/disease-scanner'
     | '/inventory'
     | '/mandi'
+    | '/offline'
     | '/profile'
+    | '/schemes'
     | '/soil'
+    | '/weather'
     | '/api/crop-advice'
     | '/api/translate'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommunityRoute: typeof CommunityRoute
   CropDoctorRoute: typeof CropDoctorRoute
   DiseaseScannerRoute: typeof DiseaseScannerRoute
   InventoryRoute: typeof InventoryRoute
   MandiRoute: typeof MandiRoute
+  OfflineRoute: typeof OfflineRoute
   ProfileRoute: typeof ProfileRoute
+  SchemesRoute: typeof SchemesRoute
   SoilRoute: typeof SoilRoute
+  WeatherRoute: typeof WeatherRoute
   ApiCropAdviceRoute: typeof ApiCropAdviceRoute
   ApiTranslateRoute: typeof ApiTranslateRoute
 }
@@ -154,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/crop-doctor': {
@@ -184,6 +243,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MandiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/offline': {
+      id: '/offline'
+      path: '/offline'
+      fullPath: '/offline'
+      preLoaderRoute: typeof OfflineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -191,11 +257,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/schemes': {
+      id: '/schemes'
+      path: '/schemes'
+      fullPath: '/schemes'
+      preLoaderRoute: typeof SchemesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/soil': {
       id: '/soil'
       path: '/soil'
       fullPath: '/soil'
       preLoaderRoute: typeof SoilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/weather': {
+      id: '/weather'
+      path: '/weather'
+      fullPath: '/weather'
+      preLoaderRoute: typeof WeatherRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/crop-advice': {
@@ -217,12 +297,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommunityRoute: CommunityRoute,
   CropDoctorRoute: CropDoctorRoute,
   DiseaseScannerRoute: DiseaseScannerRoute,
   InventoryRoute: InventoryRoute,
   MandiRoute: MandiRoute,
+  OfflineRoute: OfflineRoute,
   ProfileRoute: ProfileRoute,
+  SchemesRoute: SchemesRoute,
   SoilRoute: SoilRoute,
+  WeatherRoute: WeatherRoute,
   ApiCropAdviceRoute: ApiCropAdviceRoute,
   ApiTranslateRoute: ApiTranslateRoute,
 }
