@@ -56,7 +56,8 @@ export const Route = createFileRoute("/api/translate")({
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              model: "google/gemini-3.1-flash-lite",
+              model: "openai/gpt-6-astra",
+              reasoning_effort: "low",
               messages: [
                 {
                   role: "system",

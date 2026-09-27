@@ -22,7 +22,7 @@ export const Route = createFileRoute("/crop-doctor")({
       },
     ],
   }),
-  component: CropDoctor;
+  component: CropDoctor,
 });
 
 interface Advice {

@@ -10,12 +10,48 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CropDoctorRouteImport } from './routes/crop-doctor'
+import { Route as DiseaseScannerRouteImport } from './routes/disease-scanner'
+import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as MandiRouteImport } from './routes/mandi'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as SoilRouteImport } from './routes/soil'
 import { Route as ApiCropAdviceRouteImport } from './routes/api/crop-advice'
 import { Route as ApiTranslateRouteImport } from './routes/api/translate'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CropDoctorRoute = CropDoctorRouteImport.update({
+  id: '/crop-doctor',
+  path: '/crop-doctor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiseaseScannerRoute = DiseaseScannerRouteImport.update({
+  id: '/disease-scanner',
+  path: '/disease-scanner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryRoute = InventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MandiRoute = MandiRouteImport.update({
+  id: '/mandi',
+  path: '/mandi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SoilRoute = SoilRouteImport.update({
+  id: '/soil',
+  path: '/soil',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiCropAdviceRoute = ApiCropAdviceRouteImport.update({
@@ -31,30 +67,82 @@ const ApiTranslateRoute = ApiTranslateRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/crop-doctor': typeof CropDoctorRoute
+  '/disease-scanner': typeof DiseaseScannerRoute
+  '/inventory': typeof InventoryRoute
+  '/mandi': typeof MandiRoute
+  '/profile': typeof ProfileRoute
+  '/soil': typeof SoilRoute
   '/api/crop-advice': typeof ApiCropAdviceRoute
   '/api/translate': typeof ApiTranslateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/crop-doctor': typeof CropDoctorRoute
+  '/disease-scanner': typeof DiseaseScannerRoute
+  '/inventory': typeof InventoryRoute
+  '/mandi': typeof MandiRoute
+  '/profile': typeof ProfileRoute
+  '/soil': typeof SoilRoute
   '/api/crop-advice': typeof ApiCropAdviceRoute
   '/api/translate': typeof ApiTranslateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/crop-doctor': typeof CropDoctorRoute
+  '/disease-scanner': typeof DiseaseScannerRoute
+  '/inventory': typeof InventoryRoute
+  '/mandi': typeof MandiRoute
+  '/profile': typeof ProfileRoute
+  '/soil': typeof SoilRoute
   '/api/crop-advice': typeof ApiCropAdviceRoute
   '/api/translate': typeof ApiTranslateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/crop-advice' | '/api/translate'
+  fullPaths:
+    | '/'
+    | '/crop-doctor'
+    | '/disease-scanner'
+    | '/inventory'
+    | '/mandi'
+    | '/profile'
+    | '/soil'
+    | '/api/crop-advice'
+    | '/api/translate'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/crop-advice' | '/api/translate'
-  id: '__root__' | '/' | '/api/crop-advice' | '/api/translate'
+  to:
+    | '/'
+    | '/crop-doctor'
+    | '/disease-scanner'
+    | '/inventory'
+    | '/mandi'
+    | '/profile'
+    | '/soil'
+    | '/api/crop-advice'
+    | '/api/translate'
+  id:
+    | '__root__'
+    | '/'
+    | '/crop-doctor'
+    | '/disease-scanner'
+    | '/inventory'
+    | '/mandi'
+    | '/profile'
+    | '/soil'
+    | '/api/crop-advice'
+    | '/api/translate'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CropDoctorRoute: typeof CropDoctorRoute
+  DiseaseScannerRoute: typeof DiseaseScannerRoute
+  InventoryRoute: typeof InventoryRoute
+  MandiRoute: typeof MandiRoute
+  ProfileRoute: typeof ProfileRoute
+  SoilRoute: typeof SoilRoute
   ApiCropAdviceRoute: typeof ApiCropAdviceRoute
   ApiTranslateRoute: typeof ApiTranslateRoute
 }
@@ -66,6 +154,48 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crop-doctor': {
+      id: '/crop-doctor'
+      path: '/crop-doctor'
+      fullPath: '/crop-doctor'
+      preLoaderRoute: typeof CropDoctorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disease-scanner': {
+      id: '/disease-scanner'
+      path: '/disease-scanner'
+      fullPath: '/disease-scanner'
+      preLoaderRoute: typeof DiseaseScannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory': {
+      id: '/inventory'
+      path: '/inventory'
+      fullPath: '/inventory'
+      preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mandi': {
+      id: '/mandi'
+      path: '/mandi'
+      fullPath: '/mandi'
+      preLoaderRoute: typeof MandiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soil': {
+      id: '/soil'
+      path: '/soil'
+      fullPath: '/soil'
+      preLoaderRoute: typeof SoilRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/crop-advice': {
@@ -87,6 +217,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CropDoctorRoute: CropDoctorRoute,
+  DiseaseScannerRoute: DiseaseScannerRoute,
+  InventoryRoute: InventoryRoute,
+  MandiRoute: MandiRoute,
+  ProfileRoute: ProfileRoute,
+  SoilRoute: SoilRoute,
   ApiCropAdviceRoute: ApiCropAdviceRoute,
   ApiTranslateRoute: ApiTranslateRoute,
 }
